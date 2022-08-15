@@ -65,6 +65,7 @@ public class TestClass {
 
         MinecraftPlayerAttributesResponse playerAttributesResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/player/attributes", authenticateResponse.accessToken, new MinecraftPlayerAttributesResponse.MinecraftPlayerAttributesRequest(false), MinecraftPlayerAttributesResponse.class);
         System.out.println(playerAttributesResponse.privileges.onlineChat.enabled);
+        //I used the documention here https://wiki.vg/Mojang_API#Player_Attributes
     }
 }
 ```
