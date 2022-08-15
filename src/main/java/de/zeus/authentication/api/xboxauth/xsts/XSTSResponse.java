@@ -1,7 +1,7 @@
-package de.zeus.authentication.api.xsts;
+package de.zeus.authentication.api.xboxauth.xsts;
 
 import com.google.gson.annotations.SerializedName;
-import de.zeus.authentication.api.XUIResponse;
+import de.zeus.authentication.api.xboxauth.XUIResponse;
 
 public class XSTSResponse {
 

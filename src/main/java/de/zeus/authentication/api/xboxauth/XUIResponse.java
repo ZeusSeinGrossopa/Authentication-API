@@ -1,4 +1,4 @@
-package de.zeus.authentication.api;
+package de.zeus.authentication.api.xboxauth;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -2,12 +2,12 @@ package de.zeus.authentication;
 
 import de.zeus.authentication.api.minecraft.MinecraftAuthenticate;
 import de.zeus.authentication.api.minecraft.MinecraftAuthenticateResponse;
-import de.zeus.authentication.api.xbl.XBLAuthenticate;
-import de.zeus.authentication.api.xbl.XBLAuthenticateProperties;
-import de.zeus.authentication.api.xbl.XBLResponse;
-import de.zeus.authentication.api.xsts.XSTSAuthenticate;
-import de.zeus.authentication.api.xsts.XSTSAuthenticateProperties;
-import de.zeus.authentication.api.xsts.XSTSResponse;
+import de.zeus.authentication.api.xboxauth.xbl.XBLAuthenticate;
+import de.zeus.authentication.api.xboxauth.xbl.XBLAuthenticateProperties;
+import de.zeus.authentication.api.xboxauth.xbl.XBLResponse;
+import de.zeus.authentication.api.xboxauth.xsts.XSTSAuthenticate;
+import de.zeus.authentication.api.xboxauth.xsts.XSTSAuthenticateProperties;
+import de.zeus.authentication.api.xboxauth.xsts.XSTSResponse;
 import de.zeus.authentication.utils.HTTPUtils;
 
 public class AuthenticationAPI {

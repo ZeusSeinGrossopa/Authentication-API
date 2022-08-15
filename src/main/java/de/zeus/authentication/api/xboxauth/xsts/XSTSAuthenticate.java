@@ -1,11 +1,11 @@
-package de.zeus.authentication.api.xbl;
+package de.zeus.authentication.api.xboxauth.xsts;
 
 import com.google.gson.annotations.SerializedName;
 
-public class XBLAuthenticate {
+public class XSTSAuthenticate {
 
     @SerializedName("Properties")
-    public XBLAuthenticateProperties properties;
+    public XSTSAuthenticateProperties properties;
 
     @SerializedName("RelyingParty")
     public String relyingParty;
@@ -13,7 +13,7 @@ public class XBLAuthenticate {
     @SerializedName("TokenType")
     public String tokenType;
 
-    public XBLAuthenticate(XBLAuthenticateProperties properties, String relyingParty, String tokenType) {
+    public XSTSAuthenticate(XSTSAuthenticateProperties properties, String relyingParty, String tokenType) {
         this.properties = properties;
         this.relyingParty = relyingParty;
         this.tokenType = tokenType;
