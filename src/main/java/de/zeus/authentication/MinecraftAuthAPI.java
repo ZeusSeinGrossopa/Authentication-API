@@ -1,9 +1,6 @@
 package de.zeus.authentication;
 
-import de.zeus.authentication.api.minecraft.MinecraftEligibilityResponse;
-import de.zeus.authentication.api.minecraft.MinecraftPlayerAttributesResponse;
-import de.zeus.authentication.api.minecraft.MinecraftProfileResponse;
-import de.zeus.authentication.api.minecraft.MojangAccountResponse;
+import de.zeus.authentication.api.minecraft.*;
 import de.zeus.authentication.utils.HTTPUtils;
 
 /**
@@ -75,6 +72,19 @@ public class MinecraftAuthAPI {
      */
     public static MinecraftProfileResponse changeMinecraftUsername(String accessToken, String userName) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/name/:" + userName, accessToken, MinecraftProfileResponse.class);
+    }
+
+    /**
+     * Changing the skin of the minecraft profile. This class is used to set skin the skin via an url.
+     *
+     * @param accessToken the access token of xbox live account
+     * @param skinURL the texture skin url
+     * @return the userProfile response
+     * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @see MinecraftProfileResponse
+     */
+    public static MinecraftProfileResponse changeMinecraftSkin(String accessToken, String skinURL, String variant) throws Exception {
+        return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/skins", accessToken, new MinecraftChangeSkinRequest(skinURL, variant), MinecraftProfileResponse.class);
     }
 
     /**
