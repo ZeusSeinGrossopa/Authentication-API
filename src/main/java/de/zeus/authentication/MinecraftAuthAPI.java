@@ -109,4 +109,15 @@ public class MinecraftAuthAPI {
     public static MinecraftProfileResponse changeMinecraftCape(String accessToken, String capeID) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/capes/active", accessToken, new MinecraftChangeCapeRequest(capeID), MinecraftProfileResponse.class);
     }
+
+    /**
+     * Disables the current active cape.
+     *
+     * @param accessToken the access token of xbox live account
+     * @return the userProfile response
+     * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     */
+    public static MinecraftProfileResponse disableMinecraftCape(String accessToken) throws Exception {
+        return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/capes/active", accessToken, MinecraftProfileResponse.class);
+    }
 }
