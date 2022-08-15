@@ -17,7 +17,8 @@ Then follow the docs [here](https://docs.microsoft.com/en-us/azure/active-direct
 get an access token.
 
 With the following code you can authenticate a user with your access token and login to the XboxLive account.
-The LoginInToXboxLiveResponse contains serveral information and the final token.
+The [LoginInToXboxLiveResponse](https://github.com/ZeusSeinGrossopa/Authentication-API/blob/master/src/main/java/de/zeus/authentication/api/xboxauth/LoginInToXboxLiveResponse.java)
+contains serveral information and the final token.
 
 ```
 try {
@@ -58,7 +59,7 @@ Look in the [documentations](#Documentations) for getting other information abou
 This example shows how to get the username of the player and check if the player has enabled to use the minecraft chat
 in the xbox live settings.
 
-Use the MinecraftAuthAPI class to get even simpler information about the Minecraft account.
+Use the [MinecraftAuthAPI](https://github.com/ZeusSeinGrossopa/Authentication-API/blob/master/src/main/java/de/zeus/authentication/MinecraftAuthAPI.java) class to get even simpler information about the Minecraft account.
 
 ```java
 public class TestClass {
