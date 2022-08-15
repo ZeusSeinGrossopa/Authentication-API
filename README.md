@@ -41,11 +41,11 @@ try {
 ```
 
 ---
-### Credits
+### Documentations
 
 - [mojang-api-docs](https://mojang-api-docs.netlify.app/)
-- [Wiki.vg](https://wiki.vg/Microsoft_Authentication_Scheme)
-- [Wiki.vg](https://wiki.vg/Mojang_API)
+- [https://wiki.vg/Microsoft_Authentication_Scheme](https://wiki.vg/Microsoft_Authentication_Scheme)
+- [https://wiki.vg/Mojang_API](https://wiki.vg/Mojang_API)
 - [Microsoft OAuth 2.0 Docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
 
 ----
