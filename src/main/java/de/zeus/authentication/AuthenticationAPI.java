@@ -69,7 +69,7 @@ public class AuthenticationAPI {
      * With the IdentityToken you can log in to the XBox Live account.  See {@link #authenticateWithXboxLive(String)} for more information
      * See {@link #authenticate(String)} for the full documentation to log in.
      *
-     * @param userHash the userHash from the {@link XSTSResponse} or from the {@link XBLResponse}
+     * @param userHash  the userHash from the {@link XSTSResponse} or from the {@link XBLResponse}
      * @param xstsToken the token from the {@link XSTSResponse}
      * @return the IdentityToken
      */

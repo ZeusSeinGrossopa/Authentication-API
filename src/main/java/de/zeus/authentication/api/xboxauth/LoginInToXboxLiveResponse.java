@@ -19,6 +19,7 @@ public class LoginInToXboxLiveResponse {
     public String username;
 
     /**
+     *
      */
     @SerializedName("roles")
     public String[] roles;

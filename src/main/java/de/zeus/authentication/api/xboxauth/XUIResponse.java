@@ -12,6 +12,7 @@ public class XUIResponse {
 
     public static class XUI {
         @SerializedName("uhs")
-        public String userHash;;
+        public String userHash;
+        ;
     }
 }

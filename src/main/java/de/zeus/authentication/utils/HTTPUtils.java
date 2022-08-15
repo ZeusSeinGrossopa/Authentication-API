@@ -17,13 +17,13 @@ public class HTTPUtils {
 
     public static <T> T authenticateWithToken(String url, String token, Class<T> response) throws Exception {
         String json = authenticateWithToken(url, token);
-        return (T)GSON.fromJson(json, response);
+        return (T) GSON.fromJson(json, response);
     }
 
     public static <T> T authenticateWithToken(String url, String token, Object request, Class<T> response) throws Exception {
         String content = GSON.toJson(request);
 
-        HttpURLConnection connection = (HttpURLConnection)(new URL(url)).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) (new URL(url)).openConnection();
 
         byte[] data = content.getBytes(StandardCharsets.UTF_8);
 
@@ -38,18 +38,18 @@ public class HTTPUtils {
             IOUtils.write(data, outputStream);
         }
         String json = read(connection);
-        return (T)GSON.fromJson(json, response);
+        return (T) GSON.fromJson(json, response);
     }
 
     public static String authenticateWithToken(String url, String token) throws Exception {
-        HttpURLConnection connection = (HttpURLConnection)(new URL(url)).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) (new URL(url)).openConnection();
 
         connection.addRequestProperty("Authorization", "Bearer " + token);
         return read(connection);
     }
 
     private static String performPostRequest(String url, String content, String contentType) throws Exception {
-        HttpURLConnection connection = (HttpURLConnection)(new URL(url)).openConnection();
+        HttpURLConnection connection = (HttpURLConnection) (new URL(url)).openConnection();
 
         byte[] data = content.getBytes(StandardCharsets.UTF_8);
 
@@ -81,11 +81,11 @@ public class HTTPUtils {
 
     public static <T> T performPostFormRequest(String url, String content, Class<T> response) throws Exception {
         String json = performPostRequest(url, content, "application/x-www-form-urlencoded");
-        return (T)GSON.fromJson(json, response);
+        return (T) GSON.fromJson(json, response);
     }
 
     public static <T> T performPostObjectRequest(String url, Object request, Class<T> response) throws Exception {
         String json = performPostRequest(url, GSON.toJson(request), "application/json");
-        return (T)GSON.fromJson(json, response);
+        return (T) GSON.fromJson(json, response);
     }
 }

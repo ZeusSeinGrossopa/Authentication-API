@@ -3,7 +3,7 @@ package de.zeus.authentication.api.minecraft;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * This class gets information about the minecraft account. 
+ * This class gets information about the minecraft account.
  * See <a href="https://mojang-api-docs.netlify.app/needs-auth/create-profile.html">here</a> for more information about the request
  * The URL is <a href="https://api.minecraftservices.com/minecraft/profile">https://api.minecraftservices.com/minecraft/profile</a>
  *
@@ -25,6 +25,7 @@ public class MinecraftProfileResponse {
 
     /**
      * An array of the skins of the minecraft account.
+     *
      * @see TextureResponse
      */
     @SerializedName("skins")
@@ -32,6 +33,7 @@ public class MinecraftProfileResponse {
 
     /**
      * An array of the capes of the minecraft account
+     *
      * @see TextureResponse
      */
     @SerializedName("capes")

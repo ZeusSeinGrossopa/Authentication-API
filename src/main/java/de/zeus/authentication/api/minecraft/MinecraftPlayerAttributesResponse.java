@@ -9,8 +9,8 @@ import com.google.gson.annotations.SerializedName;
  * To get this response you need to send the {@link MinecraftPlayerAttributesRequest}.
  * The url to is <a href="https://api.minecraftservices.com/player/attributes">https://api.minecraftservices.com/player/attributes</a>
  *
- * @auhor ZeusSeinGrossopa
  * @version 1.0
+ * @auhor ZeusSeinGrossopa
  * @see MinecraftPlayerAttributesRequest
  */
 public class MinecraftPlayerAttributesResponse {
@@ -36,9 +36,107 @@ public class MinecraftPlayerAttributesResponse {
     @SerializedName("profanityFilterPreferences")
     public MinecraftPlayerAttributesRequest profanityFilterPreferences;
 
+    /**
+     * @author ZeusSeinGrossopa
+     */
+    public static class MinecraftBanStatus {
+        /**
+         * The scope of the ban
+         *
+         * @see MinecraftBanScopes
+         */
+        @SerializedName("bannedScopes")
+        public MinecraftBanScopes bannedScopes;
+
+        public MinecraftBanScopes.MinecraftMultiplayerBan getMultiplayerBan() {
+            return bannedScopes.multiplayer;
+        }
+
+        public class MinecraftBanScopes {
+            /**
+             * The multiplayer ban scope
+             *
+             * @see MinecraftMultiplayerBan
+             */
+            @SerializedName("MULTIPLAYER")
+            public MinecraftMultiplayerBan multiplayer;
+
+            /**
+             * @author ZeusSeinGrossopa
+             */
+            public static class MinecraftMultiplayerBan {
+                @SerializedName("banId")
+                public String banId;
+
+                /**
+                 * Getting when the ban expires. If null the ban is permanent
+                 * (In unix epoch time)
+                 */
+                @SerializedName("expires")
+                public String expires;
+
+                /**
+                 * The reason of the ban. This is not a custom message but a category of the ban
+                 * See <a href="https://wiki.vg/Mojang_API#Player_Attributes">here</a> for a list of the ban category's
+                 */
+                @SerializedName("reason")
+                public String reason;
+
+                /**
+                 * The reason of the ban. Can be a custom message
+                 */
+                @SerializedName("reasonMessage")
+                public String reasonMessage;
+            }
+        }
+    }
+
+    /**
+     * Request the player attributes of the minecraft account
+     * The url to is <a href="https://api.minecraftservices.com/player/attributes">https://api.minecraftservices.com/player/attributes</a>
+     * See <a href="https://wiki.vg/Mojang_API#Player_Attributes">here</a> for the docs
+     *
+     * @author ZeusSeinGrossopa
+     * @see MinecraftPrivilegesResponse
+     */
+    public static class MinecraftPlayerAttributesRequest {
+        /**
+         * The setting if Realms profanity filter should be enabled or not
+         */
+        @SerializedName("profanityFilterPreferences")
+        public ProfanityFilterPreferences profanityFilterPreferences;
+
+        public MinecraftPlayerAttributesRequest(ProfanityFilterPreferences profanityFilterPreferences) {
+            this.profanityFilterPreferences = profanityFilterPreferences;
+        }
+
+        public MinecraftPlayerAttributesRequest(boolean profanityFilterOn) {
+            this(new ProfanityFilterPreferences(profanityFilterOn));
+        }
+
+        public MinecraftPlayerAttributesRequest() {
+            this(new ProfanityFilterPreferences(false));
+        }
+
+        /**
+         * @author ZeusSeinGrossopa
+         */
+        public static class ProfanityFilterPreferences {
+            /**
+             * The setting if Realms profanity filter should be enabled or not
+             */
+            @SerializedName("profanityFilterOn")
+            public boolean profanityFilterOn;
+
+            public ProfanityFilterPreferences(boolean profanityFilterOn) {
+                this.profanityFilterOn = profanityFilterOn;
+            }
+        }
+    }
 
     /**
      * This class is based of the xbox live privacy settings for the account
+     *
      * @author ZeusSeinGrossopa
      */
     public class MinecraftPrivilegesResponse {
@@ -76,102 +174,6 @@ public class MinecraftPlayerAttributesResponse {
              */
             @SerializedName("enabled")
             public boolean enabled;
-        }
-    }
-
-    /**
-     * @author ZeusSeinGrossopa
-     */
-    public static class MinecraftBanStatus {
-        /**
-         * The scope of the ban
-         * @see MinecraftBanScopes
-         */
-        @SerializedName("bannedScopes")
-        public MinecraftBanScopes bannedScopes;
-
-        public MinecraftBanScopes.MinecraftMultiplayerBan getMultiplayerBan() {
-            return bannedScopes.multiplayer;
-        }
-
-        public class MinecraftBanScopes {
-            /**
-             * The multiplayer ban scope
-             * @see MinecraftMultiplayerBan
-             */
-            @SerializedName("MULTIPLAYER")
-            public MinecraftMultiplayerBan multiplayer;
-
-            /**
-             * @author ZeusSeinGrossopa
-             */
-            public static class MinecraftMultiplayerBan {
-                @SerializedName("banId")
-                public String banId;
-
-                /**
-                 * Getting when the ban expires. If null the ban is permanent
-                 * (In unix epoch time)
-                 */
-                @SerializedName("expires")
-                public String expires;
-
-                /**
-                 * The reason of the ban. This is not a custom message but a category of the ban
-                 * See <a href="https://wiki.vg/Mojang_API#Player_Attributes">here</a> for a list of the ban category's
-                 */
-                @SerializedName("reason")
-                public String reason;
-
-                /**
-                 * The reason of the ban. Can be a custom message
-                 */
-                @SerializedName("reasonMessage")
-                public String reasonMessage;
-            }
-        }
-    }
-
-
-    /**
-     * Request the player attributes of the minecraft account
-     * The url to is <a href="https://api.minecraftservices.com/player/attributes">https://api.minecraftservices.com/player/attributes</a>
-     * See <a href="https://wiki.vg/Mojang_API#Player_Attributes">here</a> for the docs
-     * @see MinecraftPrivilegesResponse
-     * @author ZeusSeinGrossopa
-     */
-    public static class MinecraftPlayerAttributesRequest {
-        /**
-         * The setting if Realms profanity filter should be enabled or not
-         */
-        @SerializedName("profanityFilterPreferences")
-        public ProfanityFilterPreferences profanityFilterPreferences;
-
-        public MinecraftPlayerAttributesRequest(ProfanityFilterPreferences profanityFilterPreferences) {
-            this.profanityFilterPreferences = profanityFilterPreferences;
-        }
-
-        public MinecraftPlayerAttributesRequest(boolean profanityFilterOn) {
-            this(new ProfanityFilterPreferences(profanityFilterOn));
-        }
-
-        public MinecraftPlayerAttributesRequest() {
-            this(new ProfanityFilterPreferences(false));
-        }
-
-        /**
-         * @author ZeusSeinGrossopa
-         */
-        public static class ProfanityFilterPreferences {
-            /**
-             * The setting if Realms profanity filter should be enabled or not
-             */
-            @SerializedName("profanityFilterOn")
-            public boolean profanityFilterOn;
-
-            public ProfanityFilterPreferences(boolean profanityFilterOn) {
-                this.profanityFilterOn = profanityFilterOn;
-            }
         }
     }
 }
