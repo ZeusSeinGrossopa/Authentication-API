@@ -10,7 +10,9 @@ import com.google.gson.annotations.SerializedName;
  *
  * @author ZeusSeinGrossopa
  * @version 1.0
+ * @deprecated Not currently working
  */
+@Deprecated
 public class MojangAccountResponse {
 
     /**

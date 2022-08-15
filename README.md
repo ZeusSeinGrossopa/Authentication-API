@@ -58,6 +58,8 @@ Look in the [documentations](#Documentations) for getting other information abou
 This example shows how to get the username of the player and check if the player has enabled to use the minecraft chat
 in the xbox live settings.
 
+Use the MinecraftAuthAPI class to get even simpler information about the Minecraft account.
+
 ```java
 public class TestClass {
 
@@ -71,6 +73,9 @@ public class TestClass {
         MinecraftPlayerAttributesResponse playerAttributesResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/player/attributes", authenticateResponse.accessToken, new MinecraftPlayerAttributesResponse.MinecraftPlayerAttributesRequest(false), MinecraftPlayerAttributesResponse.class);
         System.out.println(playerAttributesResponse.privileges.onlineChat.enabled);
         //I used the documention here https://wiki.vg/Mojang_API#Player_Attributes
+        
+        //The implemented API. You don't need to use this API. Follow the step here before for using this API for custom.
+        MinecraftProfileResponse profileResponse2 = MinecraftAuthAPI.getMinecraftProfile(authenticateResponse.accessToken);
     }
 }
 ```

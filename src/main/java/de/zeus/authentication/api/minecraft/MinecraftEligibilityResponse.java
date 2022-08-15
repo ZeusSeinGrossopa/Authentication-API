@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * This class gets information about the minecraft account if you can change your name and other information.
  * See <a href="https://mojang-api-docs.netlify.app/needs-auth/name-change-eligibility.html">here</a> for the documentation.
- * The URL is <a href="https://api.minecraftservices.com/minecraft/profile/namechange">...</a>
+ * The URL is <a href="https://api.minecraftservices.com/minecraft/profile/namechange">here</a>
  *
  * @author ZeusSeinGrossopa
  */
