@@ -82,6 +82,37 @@ public class TestClass {
 
 ---
 
+## Implement the API
+
+#### Maven
+
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+    <groupId>com.github.ZeusSeinGrossopa</groupId>
+    <artifactId>Covid19-Java-API</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+#### Gradle
+
+```gradle
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.ZeusSeinGrossopa:Covid19-Java-API:1.0'
+}
+```
+
+---
+
 ### Documentations
 
 - [mojang-api-docs](https://mojang-api-docs.netlify.app/)
