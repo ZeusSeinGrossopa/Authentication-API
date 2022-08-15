@@ -15,8 +15,29 @@ public class HTTPUtils {
 
     private static final Gson GSON = new Gson();
 
-    public static <T> T authenticateWithToken(String url, String bearer, Class<T> response) throws Exception {
-        String json = authenticateWithToken(url, bearer);
+    public static <T> T authenticateWithToken(String url, String token, Class<T> response) throws Exception {
+        String json = authenticateWithToken(url, token);
+        return (T)GSON.fromJson(json, response);
+    }
+
+    public static <T> T authenticateWithToken(String url, String token, Object request, Class<T> response) throws Exception {
+        String content = GSON.toJson(request);
+
+        HttpURLConnection connection = (HttpURLConnection)(new URL(url)).openConnection();
+
+        byte[] data = content.getBytes(StandardCharsets.UTF_8);
+
+        connection.setRequestProperty("Accept", "application/json");
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("Content-Length", "" + data.length);
+        connection.setRequestProperty("Authorization", "Bearer " + token);
+
+        connection.setDoOutput(true);
+
+        try (OutputStream outputStream = connection.getOutputStream()) {
+            IOUtils.write(data, outputStream);
+        }
+        String json = read(connection);
         return (T)GSON.fromJson(json, response);
     }
 
@@ -47,13 +68,13 @@ public class HTTPUtils {
 
     private static String read(HttpURLConnection connection) throws IOException {
         try (InputStream inputStream = connection.getInputStream()) {
-            return IOUtils.toString(inputStream);
+            return IOUtils.toString(inputStream, StandardCharsets.UTF_8);
         } catch (IOException exception) {
             try (InputStream errorStream = connection.getErrorStream()) {
                 if (errorStream == null) {
                     throw new RuntimeException("ErrorStream null; ErrorResponse code: " + connection.getResponseCode());
                 }
-                return IOUtils.toString(errorStream);
+                return IOUtils.toString(errorStream, StandardCharsets.UTF_8);
             }
         }
     }
