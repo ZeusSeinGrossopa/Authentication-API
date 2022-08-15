@@ -32,6 +32,7 @@ public class MinecraftAuthAPI {
      * @param attributesRequest the attributes request
      * @return the response of the request
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @see MinecraftPlayerAttributesResponse
      */
     public static MinecraftPlayerAttributesResponse getMinecraftPlayerAttributes(String accessToken, MinecraftPlayerAttributesResponse attributesRequest) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/player/attributes", accessToken, attributesRequest, MinecraftPlayerAttributesResponse.class);
@@ -43,6 +44,7 @@ public class MinecraftAuthAPI {
      * @param accessToken the access token of xbox live account
      * @return the response of the request
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @see MinecraftProfileResponse
      */
     public static MinecraftProfileResponse getMinecraftProfile(String accessToken) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile", accessToken, MinecraftProfileResponse.class);
@@ -55,9 +57,23 @@ public class MinecraftAuthAPI {
      * @return the response of the request
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
      * @deprecated Not currently working
+     * @see MojangAccountResponse
      */
     @Deprecated
     public static MojangAccountResponse getMojangAccount(String accessToken) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/account", accessToken, MojangAccountResponse.class);
+    }
+
+    /**
+     * This method changing your minecraft username.
+     *
+     * @param accessToken the access token of xbox live account
+     * @param userName the newUserName
+     * @return the userProfile response
+     * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @see MinecraftProfileResponse
+     */
+    public static MinecraftProfileResponse changeMinecraftUsername(String accessToken, String userName) throws Exception {
+        return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/name/:" + userName, accessToken, MinecraftProfileResponse.class);
     }
 }
