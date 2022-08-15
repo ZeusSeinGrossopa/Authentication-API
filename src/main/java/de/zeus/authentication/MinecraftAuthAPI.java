@@ -88,7 +88,7 @@ public class MinecraftAuthAPI {
     }
 
     /**
-     * Resets the skin to the alex and steve skin
+     * Resets the skin to the alex and steve skin.
      *
      * @param accessToken the access token of xbox live account
      * @return the userProfile response
@@ -96,5 +96,17 @@ public class MinecraftAuthAPI {
      */
     public static MinecraftProfileResponse resetMinecraftSkin(String accessToken) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/skins/active", accessToken, MinecraftProfileResponse.class);
+    }
+
+    /**
+     * Changing the cape of the minecraft profile. This class is used to set cape the cape via an id.
+     *
+     * @param accessToken the access token of xbox live account
+     * @param capeID the cape id
+     * @return the userProfile response
+     * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     */
+    public static MinecraftProfileResponse changeMinecraftCape(String accessToken, String capeID) throws Exception {
+        return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/capes/active", accessToken, new MinecraftChangeCapeRequest(capeID), MinecraftProfileResponse.class);
     }
 }
