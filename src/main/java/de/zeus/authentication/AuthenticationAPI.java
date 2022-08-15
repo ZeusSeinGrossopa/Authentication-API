@@ -10,6 +10,13 @@ import de.zeus.authentication.api.xboxauth.xsts.XSTSAuthenticateProperties;
 import de.zeus.authentication.api.xboxauth.xsts.XSTSResponse;
 import de.zeus.authentication.utils.HTTPUtils;
 
+/**
+ * This class has all methods for authenticating with the Xbox Live API.
+ * How the authentication works, see {@link #authenticate(String)}
+ *
+ * @author ZeusSeinGrossopa
+ * @version 1.0
+ */
 public class AuthenticationAPI {
 
     /**
