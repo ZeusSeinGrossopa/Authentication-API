@@ -33,6 +33,11 @@ public class MinecraftPlayerAttributesResponse {
     @SerializedName("banStatus")
     public MinecraftBanStatus banStatus;
 
+    /**
+     * The setting if Realms profanity filter should be enabled or not
+     *
+     * @see MinecraftPlayerAttributesRequest
+     */
     @SerializedName("profanityFilterPreferences")
     public MinecraftPlayerAttributesRequest profanityFilterPreferences;
 
