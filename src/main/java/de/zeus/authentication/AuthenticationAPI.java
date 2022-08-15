@@ -43,6 +43,7 @@ public class AuthenticationAPI {
      * @param xblToken the XBL token from {@link #authenticateWithXBL(String)}
      * @return the response from the XSTS authentication
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @apiNote Note that the relyingParty is in this method the minecraftservice url.
      */
     public static XSTSResponse authenticateWithXSTS(String xblToken) throws Exception {
         XSTSAuthenticateProperties properties = new XSTSAuthenticateProperties("RETAIL", new String[]{xblToken});
