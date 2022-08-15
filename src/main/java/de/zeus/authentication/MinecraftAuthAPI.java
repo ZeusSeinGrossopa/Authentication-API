@@ -18,8 +18,8 @@ public class MinecraftAuthAPI {
      *
      * @param accessToken the access token of xbox live account
      * @return the response of the request
-     * @see MinecraftEligibilityResponse
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @see MinecraftEligibilityResponse
      */
     public static MinecraftEligibilityResponse getMinecraftEligibility(String accessToken) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/namechange", accessToken, MinecraftEligibilityResponse.class);
@@ -28,7 +28,7 @@ public class MinecraftAuthAPI {
     /**
      * This class gets the full attributes of the minecraft profile.
      *
-     * @param accessToken the access token of xbox live account
+     * @param accessToken       the access token of xbox live account
      * @param attributesRequest the attributes request
      * @return the response of the request
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON

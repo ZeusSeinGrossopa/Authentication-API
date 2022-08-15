@@ -1,4 +1,4 @@
-# Authentication API V2
+# Authentication API
 
 ### Introduction
 
@@ -59,7 +59,9 @@ Look in the [documentations](#Documentations) for getting other information abou
 This example shows how to get the username of the player and check if the player has enabled to use the minecraft chat
 in the xbox live settings.
 
-Use the [MinecraftAuthAPI](https://github.com/ZeusSeinGrossopa/Authentication-API/blob/master/src/main/java/de/zeus/authentication/MinecraftAuthAPI.java) class to get even simpler information about the Minecraft account.
+Use
+the [MinecraftAuthAPI](https://github.com/ZeusSeinGrossopa/Authentication-API/blob/master/src/main/java/de/zeus/authentication/MinecraftAuthAPI.java)
+class to get even simpler information about the Minecraft account.
 
 ```java
 public class TestClass {
@@ -74,7 +76,7 @@ public class TestClass {
         MinecraftPlayerAttributesResponse playerAttributesResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/player/attributes", authenticateResponse.accessToken, new MinecraftPlayerAttributesResponse.MinecraftPlayerAttributesRequest(false), MinecraftPlayerAttributesResponse.class);
         System.out.println(playerAttributesResponse.privileges.onlineChat.enabled);
         //I used the documention here https://wiki.vg/Mojang_API#Player_Attributes
-        
+
         //The implemented API. You don't need to use this API. Follow the step here before for using this API for custom.
         MinecraftProfileResponse profileResponse2 = MinecraftAuthAPI.getMinecraftProfile(authenticateResponse.accessToken);
     }
@@ -88,15 +90,16 @@ public class TestClass {
 #### Maven
 
 ```xml
+
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
 </repository>
 
 <dependency>
-    <groupId>com.github.ZeusSeinGrossopa</groupId>
-    <artifactId>Covid19-Java-API</artifactId>
-    <version>1.0.0</version>
+<groupId>com.github.ZeusSeinGrossopa</groupId>
+<artifactId>Covid19-Java-API</artifactId>
+<version>1.0.0</version>
 </dependency>
 ```
 
