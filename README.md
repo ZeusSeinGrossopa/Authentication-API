@@ -17,11 +17,11 @@ Then follow the docs [here](https://docs.microsoft.com/en-us/azure/active-direct
 With the following code you can authenticate a user with your access token and get the identityToken. 
 
 ```
-        try {
-            String identityToken = AuthenticationAPI.authenticate("<your access token>");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+try {
+        String identityToken = AuthenticationAPI.authenticate("<your access token>");
+} catch (Exception e) {
+        throw new RuntimeException(e);
+}
 ```
 
 ### Minecraft Authentication
@@ -32,12 +32,12 @@ The bearer token is useful authorize with the minecraft api website to get more 
 See [here](https://mojang-api-docs.netlify.app/) for the list of the features of the minecraft web api. 
 
 ```
-        try {
-            MinecraftAuthenticateResponse response = AuthenticationAPI.authenticateWithMinecraft("<your access token>");
-            String token = response.accessToken; 
-        } catch(Exception e) {
-            throw new RuntimeException(e);
-        }
+try {
+    MinecraftAuthenticateResponse response = AuthenticationAPI.authenticateWithMinecraft("<your access token>");
+    String token = response.accessToken; 
+} catch(Exception e) {
+    throw new RuntimeException(e);
+}
 ```
 
 ---
@@ -45,6 +45,7 @@ See [here](https://mojang-api-docs.netlify.app/) for the list of the features of
 
 - [mojang-api-docs](https://mojang-api-docs.netlify.app/)
 - [Wiki.vg](https://wiki.vg/Microsoft_Authentication_Scheme)
+- [Wiki.vg](https://wiki.vg/Mojang_API)
 - [Microsoft OAuth 2.0 Docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
 
 ----
