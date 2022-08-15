@@ -76,4 +76,15 @@ public class MinecraftAuthAPI {
     public static MinecraftProfileResponse changeMinecraftUsername(String accessToken, String userName) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/name/:" + userName, accessToken, MinecraftProfileResponse.class);
     }
+
+    /**
+     * Resets the skin to the alex and steve skin
+     *
+     * @param accessToken the access token of xbox live account
+     * @return the userProfile response
+     * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     */
+    public static MinecraftProfileResponse resetMinecraftSkin(String accessToken) throws Exception {
+        return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/skins/active", accessToken, MinecraftProfileResponse.class);
+    }
 }
