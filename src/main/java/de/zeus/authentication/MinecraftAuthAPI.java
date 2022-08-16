@@ -120,4 +120,16 @@ public class MinecraftAuthAPI {
     public static MinecraftProfileResponse disableMinecraftCape(String accessToken) throws Exception {
         return HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile/capes/active", accessToken, MinecraftProfileResponse.class);
     }
+
+    /**
+     * Gets information about the stored creditCard information of the mojang account.
+     *
+     * @param accessToken the access token of xbox live account
+     * @return the creditCard information response
+     * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
+     * @see MinecraftCreditCardResponse
+     */
+    public static MinecraftCreditCardResponse getMinecraftCreditCard(String accessToken) throws Exception {
+        return HTTPUtils.authenticateWithToken("https://api.mojang.com/creditcards", accessToken, MinecraftCreditCardResponse.class);
+    }
 }
