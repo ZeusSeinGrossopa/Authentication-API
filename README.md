@@ -98,9 +98,9 @@ public class TestClass {
 </repository>
 
 <dependency>
-<groupId>com.github.ZeusSeinGrossopa</groupId>
-<artifactId>Covid19-Java-API</artifactId>
-<version>1.0.0</version>
+    <groupId>com.github.ZeusSeinGrossopa</groupId>
+    <artifactId>Authentication-API</artifactId>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -112,7 +112,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.ZeusSeinGrossopa:Covid19-Java-API:1.0'
+    implementation 'com.github.ZeusSeinGrossopa:Authentication-API:1.0.0'
 }
 ```
 
