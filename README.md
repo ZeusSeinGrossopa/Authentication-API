@@ -2,8 +2,8 @@
 
 ### Introduction
 
-This is a simple authentication API for the xbox authentication system.
-The API uses the OAuth2 protocol to authenticate users by microsoft.
+This is a simple **authentication** API for the xbox authentication system.
+The API uses the [OAuth2](https://en.wikipedia.org/wiki/OAuth) protocol to authenticate users by microsoft.
 
 This API supports the minecraft authentication service and the responses.
 
@@ -18,11 +18,12 @@ get an access token.
 
 With the following code you can authenticate a user with your access token and login to the XboxLive account.
 The [LoginInToXboxLiveResponse](https://github.com/ZeusSeinGrossopa/Authentication-API/blob/master/src/main/java/de/zeus/authentication/api/xboxauth/LoginInToXboxLiveResponse.java)
-contains serveral information and the final token.
+contains serveral information and the final token. The relayingParty is the application where to authorize the user. For example is the application url from minecraft: _`rp://api.minecraftservices.com/`_.
+
 
 ```
 try {
-    LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticate("<your access token>");
+    LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticate("<your access token>", "<relayingParty>");
 } catch (Exception e) {
     throw new RuntimeException(e);
 }
@@ -68,7 +69,7 @@ public class TestClass {
 
     public static void main(String[] args) throws Exception {
         String accessToken = "<your accessToken>"; //See in the #How to use step how to get the accessToken
-        LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticate(accessToken);
+        LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticateWithMinecraft(accessToken);
 
         MinecraftProfileResponse profileResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile", authenticateResponse.accessToken, MinecraftProfileResponse.class);
         System.out.println(profileResponse.name);
@@ -123,5 +124,6 @@ dependencies {
 - [https://wiki.vg/Microsoft_Authentication_Scheme](https://wiki.vg/Microsoft_Authentication_Scheme)
 - [https://wiki.vg/Mojang_API](https://wiki.vg/Mojang_API)
 - [Microsoft OAuth 2.0 Docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+- [Wikipedia OAuth 2.0](https://en.wikipedia.org/wiki/OAuth)
 
 ----
