@@ -1,4 +1,5 @@
 # Authentication API
+[![](https://jitpack.io/v/ZeusSeinGrossopa/Authentication-API.svg)](https://jitpack.io/#ZeusSeinGrossopa/Authentication-API)
 
 ### Introduction
 
