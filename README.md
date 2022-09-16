@@ -38,7 +38,7 @@ With the following code can you authorize with the minecraft api. You get inform
 players name.
 The bearer token is useful authorize with the minecraft api website to get more information about the minecraft account.
 
-See [here](https://mojang-api-docs.netlify.app/) for the list of the features of the minecraft web api.
+See [here](https://mojang-api-docs.netlify.app/needs-auth/index.html) for the list of the features of the minecraft web api.
 
 ```
 try {
