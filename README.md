@@ -72,12 +72,15 @@ public class TestClass {
         String accessToken = "<your accessToken>"; //See in the #How to use step how to get the accessToken
         LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticateWithMinecraft(accessToken);
 
+  
         MinecraftProfileResponse profileResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile", authenticateResponse.accessToken, MinecraftProfileResponse.class);
         System.out.println("Profile Name of the Xbox user: " + profileResponse.name);
 
+        //Next we getting the information if the xbox account has enabled that the onlinechat gets showed to the player.
+        //I used the documention here https://wiki.vg/Mojang_API#Player_Attributes
+        
         MinecraftPlayerAttributesResponse playerAttributesResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/player/attributes", authenticateResponse.accessToken, new MinecraftPlayerAttributesResponse.MinecraftPlayerAttributesRequest(false), MinecraftPlayerAttributesResponse.class);
         System.out.println("The setting if the player has the online chat enabled in minecraft: " + playerAttributesResponse.privileges.onlineChat.enabled);
-        //I used the documention here https://wiki.vg/Mojang_API#Player_Attributes
 
         //The implemented API. You don't need to use this API. Follow the step here before for using this API for custom.
         MinecraftProfileResponse profileResponse2 = MinecraftAuthAPI.getMinecraftProfile(authenticateResponse.accessToken);
