@@ -58,7 +58,7 @@ Look in the [documentations](#Documentations) for getting other information abou
 
 ### Example
 
-This example shows how to get the username of the player and check if the player has enabled to use the minecraft chat
+This example shows how to get the xbox live account username of the player and check if the player has enabled to use the minecraft chat
 in the xbox live settings.
 
 Use
@@ -70,20 +70,17 @@ public class TestClass {
 
     public static void main(String[] args) throws Exception {
         String accessToken = "<your accessToken>"; //See in the #How to use step how to get the accessToken
-        LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticateWithMinecraft(accessToken);
+        LoginInToXboxLiveResponse authenticateResponse = AuthenticationAPI.authenticateWithMinecraft(accessToken); //This method authorize with the xboxlive account with the minecraft RelyingParty url
 
-  
+
         MinecraftProfileResponse profileResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/minecraft/profile", authenticateResponse.accessToken, MinecraftProfileResponse.class);
-        System.out.println("Profile Name of the Xbox user: " + profileResponse.name);
+        System.out.println("Profile Name of the Minecraft account user: " + profileResponse.name);
 
         //Next we getting the information if the xbox account has enabled that the onlinechat gets showed to the player.
         //I used the documention here https://wiki.vg/Mojang_API#Player_Attributes
-        
+
         MinecraftPlayerAttributesResponse playerAttributesResponse = HTTPUtils.authenticateWithToken("https://api.minecraftservices.com/player/attributes", authenticateResponse.accessToken, new MinecraftPlayerAttributesResponse.MinecraftPlayerAttributesRequest(false), MinecraftPlayerAttributesResponse.class);
         System.out.println("The setting if the player has the online chat enabled in minecraft: " + playerAttributesResponse.privileges.onlineChat.enabled);
-
-        //The implemented API. You don't need to use this API. Follow the step here before for using this API for custom.
-        MinecraftProfileResponse profileResponse2 = MinecraftAuthAPI.getMinecraftProfile(authenticateResponse.accessToken);
     }
 }
 ```
