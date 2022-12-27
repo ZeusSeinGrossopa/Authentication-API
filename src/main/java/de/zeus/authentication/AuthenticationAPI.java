@@ -20,10 +20,10 @@ import de.zeus.authentication.utils.HTTPUtils;
 public class AuthenticationAPI {
 
     /**
-     * The relaying party for the minecraft authentication.
+     * The relyingParty for the minecraft authentication.
      * Use this for the {@link #authenticate(String, String)} or the {@link #authenticateWithXboxLive(String)} method.
      */
-    public static final String minecraftRelayingParty = "rp://api.minecraftservices.com/";
+    public static final String minecraftRelyingParty = "rp://api.minecraftservices.com/";
 
     /**
      * This method authenticates you with XBL. XBL is a step before we can log in to the XBox Live account.
@@ -47,14 +47,14 @@ public class AuthenticationAPI {
      * See {@link #authenticate(String, String)} for the full documentation to log in.
      *
      * @param xblToken the XBL token from {@link #authenticateWithXBL(String)}
-     * @param relayingParty the relaying party. For example for minecraft: rp://api.minecraftservices.com/
+     * @param relyingParty the relyingParty. For example for minecraft: rp://api.minecraftservices.com/
      * @return the response from the XSTS authentication
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
      * @apiNote Note that the relyingParty is in this method the minecraftservice url.
      */
-    public static XSTSResponse authenticateWithXSTS(String xblToken, String relayingParty) throws Exception {
+    public static XSTSResponse authenticateWithXSTS(String xblToken, String relyingParty) throws Exception {
         XSTSAuthenticateProperties properties = new XSTSAuthenticateProperties("RETAIL", new String[]{xblToken});
-        XSTSAuthenticate authenticateRequest = new XSTSAuthenticate(properties, relayingParty, "JWT");
+        XSTSAuthenticate authenticateRequest = new XSTSAuthenticate(properties, relyingParty, "JWT");
 
         return HTTPUtils.performPostObjectRequest("https://xsts.auth.xboxlive.com/xsts/authorize", authenticateRequest, XSTSResponse.class);
     }
@@ -111,13 +111,13 @@ public class AuthenticationAPI {
      * For the full documents see <a href="https://mojang-api-docs.netlify.app/authentication/msa.html">here</a> or <a href="https://wiki.vg/Microsoft_Authentication_Scheme">here</a>
      *
      * @param accessToken the access token from the OAuth2.0 client ID
-     * @param relayingParty the relaying party. For example for minecraft: rp://api.minecraftservices.com/
+     * @param relyingParty the relyingParty. For example for minecraft: rp://api.minecraftservices.com/
      * @return the response of the login from the XboxLive account
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
      */
-    public static LoginInToXboxLiveResponse authenticate(String accessToken, String relayingParty) throws Exception {
+    public static LoginInToXboxLiveResponse authenticate(String accessToken, String relyingParty) throws Exception {
         XBLResponse xblResponse = authenticateWithXBL(accessToken);
-        XSTSResponse xstsResponse = authenticateWithXSTS(xblResponse.token, relayingParty);
+        XSTSResponse xstsResponse = authenticateWithXSTS(xblResponse.token, relyingParty);
         String identityToken = getIdentityToken(xstsResponse);
 
         return authenticateWithXboxLive(identityToken);
@@ -131,6 +131,6 @@ public class AuthenticationAPI {
      * @throws Exception if something went wrong. Like if the response code is not 200 or if the response is not a valid JSON
      */
     public static LoginInToXboxLiveResponse authenticateWithMinecraft(String accessToken) throws Exception {
-        return authenticate(accessToken, minecraftRelayingParty);
+        return authenticate(accessToken, minecraftRelyingParty);
     }
 }

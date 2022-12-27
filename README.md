@@ -92,7 +92,6 @@ public class TestClass {
 #### Maven
 
 ```xml
-
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
