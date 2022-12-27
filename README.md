@@ -19,7 +19,7 @@ get an access token.
 
 With the following code you can authenticate a user with your access token and login to the XboxLive account.
 The [LoginInToXboxLiveResponse](https://github.com/ZeusSeinGrossopa/Authentication-API/blob/master/src/main/java/de/zeus/authentication/api/xboxauth/LoginInToXboxLiveResponse.java)
-contains serveral information and the final token. The relyingParty is the application where to authorize the user. For example is the application url from minecraft: _`rp://api.minecraftservices.com/`_.
+contains several information and the final token. The relyingParty is the application where to authorize the user. For example is the application url from minecraft: _`rp://api.minecraftservices.com/`_.
 
 
 ```
