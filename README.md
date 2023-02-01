@@ -100,7 +100,7 @@ public class TestClass {
 <dependency>
     <groupId>com.github.ZeusSeinGrossopa</groupId>
     <artifactId>Authentication-API</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
